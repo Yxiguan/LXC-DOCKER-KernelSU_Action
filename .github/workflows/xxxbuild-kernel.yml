@@ -9,9 +9,9 @@ jobs:
   build:
     name: Build Kernel by ${{ github.actor }}
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     if: github.event.repository.owner.id == github.event.sender.id
+    permissions:
+      contents: write
     env:
       CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
       CCACHE_NOHASHDIR: "true"
