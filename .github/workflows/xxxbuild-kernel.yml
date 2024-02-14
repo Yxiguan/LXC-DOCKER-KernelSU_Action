@@ -4,12 +4,13 @@ on:
     types: [started]
 
   workflow_dispatch:
-permissions:
-  contents: write
+
 jobs:
   build:
     name: Build Kernel by ${{ github.actor }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: github.event.repository.owner.id == github.event.sender.id
     env:
       CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
